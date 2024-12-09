@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "build": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
