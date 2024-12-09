@@ -1,4 +1,5 @@
-export const Products = [
+
+/*export let Products = [
     {
       "id": 1,
       "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -240,3 +241,6 @@ export const Products = [
       }
     }
   ]
+  */
+
+  export let Products = []

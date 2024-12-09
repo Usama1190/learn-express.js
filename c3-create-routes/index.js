@@ -6,6 +6,8 @@ const app = express();
 
 dotenv.config();
 
+app.use(express.json());    // middle ware
+
 app.get('/', (req, res) => {
     res.status(200).send('Welcome to Backend!')
 })

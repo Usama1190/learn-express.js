@@ -73,4 +73,48 @@ productsRoute.get("/category", (req, res) => {
   }
 });
 
+
+
+// POST ----> data transfer from input
+
+productsRoute.post('/', (req, res) => {
+  // const {id, title, description} = req.body;
+  // console.log(id, title, description);
+
+  const data = req.body;
+  // const { id, title, description } = data;
+
+  const isAlreadyFound = Products.find((item) => item.id == data.id);
+
+    if (isAlreadyFound) {
+      return res
+        .status(409)
+        .send({ status: 409, message: "Product already found" });
+    }
+    else {
+      Products.push(data);
+      res.status(201).send({ status: 201, message: "Product add successfully", data: Products })
+
+    }
+})
+
+
+
+productsRoute.delete('/:id', (req, res) => {
+
+  const { id } = req.params;
+  const idNotFound = Products.find((item) => item.id == id);
+
+  if(!idNotFound) {
+    return res
+        .status(409)
+        .send({ status: 409, message: "Product ID not found" });
+  }
+
+  let deletedItem = Products.filter((item) => item.id != id);
+  // console.log(deletedItem);
+  
+  res.status(200).send({ status: 200, message: "Product delete successfully", data: deletedItem })
+})
+
 export default productsRoute;
