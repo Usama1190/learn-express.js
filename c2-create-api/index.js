@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import comments from './comments.js'
 import productRoutes from './routes/productsRoute.js';
 import usersRoute from './routes/usersRoute.js';
+import {authRoute} from './routes/authRoute.js';
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/products', productRoutes);
 app.use('/users', usersRoute);
+app.use('/auth', authRoute);
 
 
 
