@@ -1,3 +1,25 @@
+import express from 'express';
+import { enums } from '../constant/enum.js';
+
+export const taskRoutes = express.Router();
+
+taskRoutes.get('/', (req, res) => {
+    try {
+        res.status(200).send({ status: 200, message: enums.SUCCESS_MSG, data: [] })
+    } catch (error) {
+        res.status(400).send({ status: 400, message: enums.ERROR_MSG })
+    }
+})
+
+
+
+
+
+
+/*
+
+Extracted Code
+
 import express from "express";
 import { enums } from "../contstant/enum.js";
 import Tasks from "../models/taskModel.js";
@@ -53,3 +75,6 @@ taskRoutes.put("/update/:id", async (req, res) => {
   });
 
 export default taskRoutes;
+
+*/
+

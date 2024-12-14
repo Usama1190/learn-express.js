@@ -1,3 +1,44 @@
+import express from 'express';
+import dotenv from 'dotenv';
+import { taskRoutes } from './routes/taskRoutes.js';
+import { enums } from './constant/enum.js';
+
+const app = express();
+dotenv.config();
+
+app.use(express.json());
+
+app.use('/task', taskRoutes)
+
+app.get('/', (req, res) => {
+    try {
+        res.status(200).send({ status: 200, message: enums.SUCCESS })
+    }
+    catch(error) {
+        res.status(400).send({ status: 400, message: enums.ERROR_MSG })
+    }
+})
+
+
+
+
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+})
+
+
+
+
+
+
+
+
+
+/*
+
 // Extracted code
 
 import express from 'express'
@@ -46,3 +87,6 @@ dbConnection();
 app.listen(PORT,()=>{
     console.log('server started')
 })
+
+
+*/
