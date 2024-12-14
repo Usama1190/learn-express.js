@@ -3,7 +3,7 @@ export const enums = {
     ERROR_MSG: "Something went wrong",
     SUCCESS_MSG: "Add successfully",
     DELETE_MSG: "Deleted successfully",
-    Update_MSG: "Updated successfully"
+    UPDATE_MSG: "Updated successfully"
 }
 
 

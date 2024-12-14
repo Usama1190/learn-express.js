@@ -2,13 +2,22 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { taskRoutes } from './routes/taskRoutes.js';
 import { enums } from './constant/enum.js';
+import mongoose from 'mongoose';
+
+/*
+
+mongodb
+username: usamaisrar1190
+password: hxwqKnbEW8n5M22x
+
+*/
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 
-app.use('/task', taskRoutes)
+app.use('/tasks', taskRoutes)
 
 app.get('/', (req, res) => {
     try {
@@ -19,8 +28,36 @@ app.get('/', (req, res) => {
     }
 })
 
+const MONGODB_URI = process.env.MONGODB_URI;
 
 
+/*  
+
+mongoose.connect(MONGODB_URI)
+.then(() => {
+    console.log('db connected successfully!');
+    
+})
+.catch((error) => {
+    console.log('db not connected!', error);
+    
+})
+
+*/
+
+
+const dbConnection = async() => {
+    try {
+        await mongoose.connect(MONGODB_URI);
+        console.log('db connected successfully!');
+        
+    } catch (error) {
+        console.log('db not connected!', error);
+        
+    }
+}
+
+dbConnection();
 
 
 const PORT = process.env.PORT || 8080;
